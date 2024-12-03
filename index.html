@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>Basic WebViewer</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<!-- Import WebViewer as a script tag -->
+<script src='WebViewer/lib/webviewer.min.js'></script>
+
+<body>
+    <div id='viewer' style='width: 1024px; height: 600px; margin: 0 auto;'></div>
+    <script>
+        WebViewer.WebComponent({
+            path: 'WebViewer/lib', // path to the Apryse 'lib' folder on your server
+            licenseKey: 'demo:1733225823460:7edd46e203000000006883c50baf2f3317cfa4362bd56f9445efca8401', // sign up to get a key at https://dev.apryse.com
+            initialDoc: 'https://pdftron.s3.amazonaws.com/downloads/pl/webviewer-demo.pdf',
+            // initialDoc: '/path/to/my/file.pdf', // You can also use documents on your server
+        }, document.getElementById('viewer'))
+            .then(instance => {
+                const { documentViewer, annotationManager } = instance.Core;
+
+                // call methods from instance, documentViewer and annotationManager as needed
+
+                // you can also access major namespaces from the instance as follows:
+                // const Tools = instance.Core.Tools;
+                // const Annotations = instance.Core.Annotations;
+
+                documentViewer.addEventListener('documentLoaded', () => {
+                    // call methods relating to the loaded document
+                });
+            });
+    </script>
+</body>
+
+</html>
